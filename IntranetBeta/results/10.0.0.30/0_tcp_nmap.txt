@@ -1,0 +1,64 @@
+# Nmap 7.92 scan initiated Fri Jul 22 09:44:17 2022 as: nmap -vv --reason -sV -sC -Pn --min-rate=400 -T4 --script-timeout 10m -p- -oN results/10.0.0.30/0_tcp_nmap.txt -oX results/10.0.0.30/0_tcp_nmap.xml 10.0.0.30
+Nmap scan report for 10.0.0.30
+Host is up, received user-set (0.025s latency).
+Scanned at 2022-07-22 09:44:18 -03 for 22s
+Not shown: 65531 closed tcp ports (reset)
+PORT    STATE SERVICE     REASON         VERSION
+80/tcp  open  http        syn-ack ttl 63 Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: POST OPTIONS HEAD GET
+|_http-title: Apache2 Ubuntu Default Page: It works
+111/tcp open  rpcbind     syn-ack ttl 63 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|_  100000  3,4          111/udp6  rpcbind
+139/tcp open  netbios-ssn syn-ack ttl 63 Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn syn-ack ttl 63 Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+Service Info: Host: LINUX
+
+Host script results:
+|_clock-skew: mean: -440d20h13m59s, deviation: 2h18m33s, median: -440d21h33m59s
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| nbstat: NetBIOS name: LINUX, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| Names:
+|   LINUX<00>            Flags: <unique><active>
+|   LINUX<03>            Flags: <unique><active>
+|   LINUX<20>            Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   WORKGROUP<1e>        Flags: <group><active>
+| Statistics:
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| smb2-time: 
+|   date: 2021-05-07T15:10:40
+|_  start_date: N/A
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 21420/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 64754/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 10881/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 17917/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: osboxes
+|   NetBIOS computer name: LINUX\x00
+|   Domain name: \x00
+|   FQDN: osboxes
+|_  System time: 2021-05-07T11:10:40-04:00
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul 22 09:44:40 2022 -- 1 IP address (1 host up) scanned in 22.41 seconds

@@ -1,0 +1,910 @@
+I Summary
+=========
+
+This document reports on the results of an automatic security scan.
+The report first summarises the results found.
+Then, for each host, the report describes every issue found.
+Please consider the advice given in each description, in order to rectify
+the issue.
+
+All dates are displayed using the timezone "America/Sao_Paulo",
+which is abbreviated "-03".
+
+Vendor security updates are not trusted.
+
+Overrides are off.  Even when a result has an override, this report uses
+the actual threat of the result.
+
+Notes are included in the report.Information on overrides is included in the report.
+
+This report might not show details of all issues that were found.
+Issues with the threat level "Log" are not shown.
+Issues with the threat level "Debug" are not shown.
+Issues with the threat level "False Positive" are not shown.
+Only results with a minimum QoD of 70 are shown.
+
+This report contains all 12 results selected by the
+filtering described above.  Before filtering there were 103 results.
+
+Scan started: Mon Jul 18 17:33:43 2022 -03
+Scan ended:   Mon Jul 18 17:49:05 2022 -03
+Task:         Immediate scan of IP 10.0.0.25
+
+Host Summary
+************
+
+Host            High  Medium  Low  Log  False Positive
+10.0.0.25          6       5    1    0               0
+Total: 1           6       5    1    0               0
+
+
+II Results per Host
+===================
+
+Host 10.0.0.25
+**************
+
+Scanning of this host started at: Mon Jul 18 17:34:05 2022 -03
+Number of results: 12
+
+Port Summary for Host 10.0.0.25
+-------------------------------
+
+Service (Port)          Threat Level
+general/tcp             Low
+10000/tcp               High
+80/tcp                  Medium
+22/tcp                  Medium
+
+Security Issues for Host 10.0.0.25
+----------------------------------
+
+Issue
+-----
+NVT:    Webmin <= 1.991 Privilege Escalation Vulnerability
+OID:    1.3.6.1.4.1.25623.1.0.127014
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to a privilege escalation vulnerability.
+
+Vulnerability Detection Result:
+Installed version: 1.962
+Fixed version:     1.994
+Installation
+path / port:       /
+
+Solution:
+Solution type: VendorFix
+Update to version 1.994 or later.
+
+Affected Software/OS:
+Webmin version 1.991 and prior.
+
+Vulnerability Insight:
+Webmin, when the Authentic theme is used, allows remote code
+  execution when a user has been manually created (i.e., not created in Virtualm!
+in or Cloudmin).
+  This occurs because settings-editor_write.cgi does not properly restrict the f!
+ile parameter.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.991 Privilege Escalation Vulnerability
+(OID: 1.3.6.1.4.1.25623.1.0.127014)
+Version used: 2022-05-26T03:04:21Z
+
+References:
+ cve: CVE-2022-30708
+ url: https://github.com/esp0xdeadbeef/rce_webmin
+ url: https://github.com/webmin/webmin/issues/1635
+ url: https://www.webmin.com/security.html
+ cert-bund: CB-K22/0609
+
+
+Issue
+-----
+NVT:    Webmin <= 1.984 Multiple Vulnerabilities
+OID:    1.3.6.1.4.1.25623.1.0.147747
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to multiple vulnerabilities.
+
+Vulnerability Detection Result:
+Installed version: 1.962
+Fixed version:     1.990
+Installation
+path / port:       /
+
+Solution:
+Solution type: VendorFix
+Update to version 1.990 or later.
+
+Affected Software/OS:
+Webmin version 1.984 and prior.
+
+Vulnerability Insight:
+The following vulnerabilities exist:
+  - CVE-2022-0824: Improper access control leads to remote code execution (RCE)
+  - CVE-2022-0829: Improper authorization
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.984 Multiple Vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.147747)
+Version used: 2022-04-27T08:53:35Z
+
+References:
+ cve: CVE-2022-0824
+ cve: CVE-2022-0829
+ url: https://www.webmin.com/security.html
+ url: https://huntr.dev/bounties/d0049a96-de90-4b1a-9111-94de1044f295/
+ url: https://huntr.dev/bounties/f2d0389f-d7d1-4f34-9f9d-268b0a0da05e/
+ url: https://github.com/webmin/webmin/commit/eeeea3c097f5cc473770119f7ac61f1dcfa671b9
+ url: https://github.com/webmin/webmin/commit/39ea464f0c40b325decd6a5bfb7833fa4a142e38
+ cert-bund: CB-K22/0267
+
+
+Issue
+-----
+NVT:    Webmin <= 1.983 RCE Vulnerability
+OID:    1.3.6.1.4.1.25623.1.0.145090
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to a remote code execution (RCE) vulnerability.
+
+Vulnerability Detection Result:
+Installed version: 1.962
+Fixed version:     None
+Installation
+path / port:       /
+
+Solution:
+Solution type: WillNotFix
+No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymo!
+re. General solution
+  options are to upgrade to a newer release, disable respective features, remove!
+ the product or
+  replace the product by another one.
+
+Affected Software/OS:
+Webmin version 1.983 and prior.
+
+Vulnerability Insight:
+Arbitrary command execution can occur in Webmin. Any user
+  authorized for the Package Updates module can execute arbitrary commands with !
+root privileges via
+  vectors involving %0A and %0C.
+  NOTE: this issue exists because of an incomplete fix for CVE-2019-12840.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.983 RCE Vulnerability
+(OID: 1.3.6.1.4.1.25623.1.0.145090)
+Version used: 2021-12-23T08:45:36Z
+
+References:
+ cve: CVE-2020-35606
+ url: https://www.pentest.com.tr/exploits/Webmin-1962-PU-Escape-Bypass-Remote-Command-Execution.html
+
+
+Issue
+-----
+NVT:    Webmin <= 1.994 Multiple Vulnerabilities
+OID:    1.3.6.1.4.1.25623.1.0.127047
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to multiple vulnerabilities.
+
+Vulnerability Detection Result:
+Installed version: 1.962
+Fixed version:     None
+Installation
+path / port:       /
+
+Solution:
+Solution type: NoneAvailable
+No known solution is available as of 16th June, 2022.
+  Information regarding this issue will be updated once solution details are ava!
+ilable.
+
+Affected Software/OS:
+Webmin version 1.994 and prior.
+
+Vulnerability Insight:
+The following vulnerabilities exist:
+  - CVE-2021-32156: A cross-site request forgery (CSRF) vulnerability exists via
+  the Scheduled Cron Jobs feature.
+  - CVE-2021-32157: A Cross-Site Scripting (XSS) vulnerability exists via the Sc!
+heduled Cron Jobs
+  feature.
+  - CVE-2021-32158: A Cross-Site Scripting (XSS) vulnerability exists via the Up!
+load and Download
+  feature.
+  - CVE-2021-32159: A Cross-site request forgery (CSRF) vulnerability exists via
+  the Upload and Download feature.
+  - CVE-2021-32160: A Cross-Site Scripting (XSS) vulnerability exists through
+  the Add Users feature.
+  - CVE-2021-32161: A Cross-Site Scripting (XSS) vulnerability exists through
+  the File Manager feature.
+  - CVE-2021-32162: A Cross-site request forgery (CSRF) vulnerability exists thr!
+ough
+  the File Manager feature.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.994 Multiple Vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.127047)
+Version used: 2022-06-17T14:04:08Z
+
+References:
+ cve: CVE-2021-32156
+ cve: CVE-2021-32157
+ cve: CVE-2021-32158
+ cve: CVE-2021-32159
+ cve: CVE-2021-32160
+ cve: CVE-2021-32161
+ cve: CVE-2021-32162
+ url: https://github.com/Mesh3l911/CVE-2021-32157
+ url: https://github.com/Mesh3l911/CVE-2021-32158
+ url: https://github.com/Mesh3l911/CVE-2021-32159
+ url: https://github.com/Mesh3l911/CVE-2021-32160
+ url: https://github.com/Mesh3l911/CVE-2021-32161
+ url: https://github.com/Mesh3l911/CVE-2021-32162
+ cert-bund: CB-K22/0412
+
+
+Issue
+-----
+NVT:    Webmin < 0.970 / Usermin < 0.910 Login XSS Vulnerability
+OID:    1.3.6.1.4.1.25623.1.0.802258
+Threat: High (CVSS: 7.5)
+Port:   10000/tcp
+
+Summary:
+Webmin and Usermin are prone to a cross-site scripting (XSS)
+  vulnerability.
+
+Vulnerability Detection Result:
+Vulnerable URL: https://10.0.0.25:10000/session_login.cgi
+
+Impact:
+Successful exploitation will allow remote attackers to insert
+  arbitrary HTML and script code, which will be executed in a users browser ses!
+sion in the context
+  of an affected site.
+
+Solution:
+Solution type: VendorFix
+Update to Webmin version 0.970, Usermin version 0.910 or later.
+
+Affected Software/OS:
+- Webmin version 0.960 and earlier
+  - Usermin version 0.900 and earlier
+
+Vulnerability Insight:
+The flaw is due to improper validation of user-supplied input
+  via the authentication page, which allows attackers to execute arbitrary HTML !
+and script code in a
+  users browser session in the context of an affected site.
+
+Vulnerability Detection Method:
+Details:
+Webmin < 0.970 / Usermin < 0.910 Login XSS Vulnerability
+(OID: 1.3.6.1.4.1.25623.1.0.802258)
+Version used: 2022-04-28T13:38:57Z
+
+References:
+ cve: CVE-2002-0756
+ url: http://xforce.iss.net/xforce/xfdb/9036
+ url: http://www.securityfocus.com/bid/4694
+ url: https://web.archive.org/web/20050310165633/http://archives.neohapsis.com/archives/bugtraq/2002-05/0040.html
+
+
+Issue
+-----
+NVT:    SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+OID:    1.3.6.1.4.1.25623.1.0.108031
+Threat: High (CVSS: 7.5)
+Port:   10000/tcp
+
+Summary:
+This routine reports all SSL/TLS cipher suites accepted by a service
+  where attack vectors exists only on HTTPS services.
+
+Vulnerability Detection Result:
+'Vulnerable' cipher suites accepted by this service via the TLSv1.2 protocol:
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+Solution:
+Solution type: Mitigation
+The configuration of this services should be changed so
+  that it does not accept the listed cipher suites anymore.
+  Please see the references for more resources supporting you with this task.
+
+Affected Software/OS:
+Services accepting vulnerable SSL/TLS cipher suites via HTTPS.
+
+Vulnerability Insight:
+These rules are applied for the evaluation of the vulnerable cipher suites:
+  - 64-bit block cipher 3DES vulnerable to the SWEET32 attack (CVE-2016-2183).
+
+Vulnerability Detection Method:
+Details:
+SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+(OID: 1.3.6.1.4.1.25623.1.0.108031)
+Version used: 2021-09-20T09:01:50Z
+
+References:
+ cve: CVE-2016-2183
+ cve: CVE-2016-6329
+ cve: CVE-2020-12872
+ url: https://bettercrypto.org/
+ url: https://mozilla.github.io/server-side-tls/ssl-config-generator/
+ url: https://sweet32.info/
+ cert-bund: CB-K21/1094
+ cert-bund: CB-K20/1023
+ cert-bund: CB-K20/0321
+ cert-bund: CB-K20/0314
+ cert-bund: CB-K20/0157
+ cert-bund: CB-K19/0618
+ cert-bund: CB-K19/0615
+ cert-bund: CB-K18/0296
+ cert-bund: CB-K17/1980
+ cert-bund: CB-K17/1871
+ cert-bund: CB-K17/1803
+ cert-bund: CB-K17/1753
+ cert-bund: CB-K17/1750
+ cert-bund: CB-K17/1709
+ cert-bund: CB-K17/1558
+ cert-bund: CB-K17/1273
+ cert-bund: CB-K17/1202
+ cert-bund: CB-K17/1196
+ cert-bund: CB-K17/1055
+ cert-bund: CB-K17/1026
+ cert-bund: CB-K17/0939
+ cert-bund: CB-K17/0917
+ cert-bund: CB-K17/0915
+ cert-bund: CB-K17/0877
+ cert-bund: CB-K17/0796
+ cert-bund: CB-K17/0724
+ cert-bund: CB-K17/0661
+ cert-bund: CB-K17/0657
+ cert-bund: CB-K17/0582
+ cert-bund: CB-K17/0581
+ cert-bund: CB-K17/0506
+ cert-bund: CB-K17/0504
+ cert-bund: CB-K17/0467
+ cert-bund: CB-K17/0345
+ cert-bund: CB-K17/0098
+ cert-bund: CB-K17/0089
+ cert-bund: CB-K17/0086
+ cert-bund: CB-K17/0082
+ cert-bund: CB-K16/1837
+ cert-bund: CB-K16/1830
+ cert-bund: CB-K16/1635
+ cert-bund: CB-K16/1630
+ cert-bund: CB-K16/1624
+ cert-bund: CB-K16/1622
+ cert-bund: CB-K16/1500
+ cert-bund: CB-K16/1465
+ cert-bund: CB-K16/1307
+ cert-bund: CB-K16/1296
+ dfn-cert: DFN-CERT-2021-1618
+ dfn-cert: DFN-CERT-2021-0775
+ dfn-cert: DFN-CERT-2021-0770
+ dfn-cert: DFN-CERT-2021-0274
+ dfn-cert: DFN-CERT-2020-2141
+ dfn-cert: DFN-CERT-2020-0368
+ dfn-cert: DFN-CERT-2019-1455
+ dfn-cert: DFN-CERT-2019-0068
+ dfn-cert: DFN-CERT-2018-1296
+ dfn-cert: DFN-CERT-2018-0323
+ dfn-cert: DFN-CERT-2017-2070
+ dfn-cert: DFN-CERT-2017-1954
+ dfn-cert: DFN-CERT-2017-1885
+ dfn-cert: DFN-CERT-2017-1831
+ dfn-cert: DFN-CERT-2017-1821
+ dfn-cert: DFN-CERT-2017-1785
+ dfn-cert: DFN-CERT-2017-1626
+ dfn-cert: DFN-CERT-2017-1326
+ dfn-cert: DFN-CERT-2017-1239
+ dfn-cert: DFN-CERT-2017-1238
+ dfn-cert: DFN-CERT-2017-1090
+ dfn-cert: DFN-CERT-2017-1060
+ dfn-cert: DFN-CERT-2017-0968
+ dfn-cert: DFN-CERT-2017-0947
+ dfn-cert: DFN-CERT-2017-0946
+ dfn-cert: DFN-CERT-2017-0904
+ dfn-cert: DFN-CERT-2017-0816
+ dfn-cert: DFN-CERT-2017-0746
+ dfn-cert: DFN-CERT-2017-0677
+ dfn-cert: DFN-CERT-2017-0675
+ dfn-cert: DFN-CERT-2017-0611
+ dfn-cert: DFN-CERT-2017-0609
+ dfn-cert: DFN-CERT-2017-0522
+ dfn-cert: DFN-CERT-2017-0519
+ dfn-cert: DFN-CERT-2017-0482
+ dfn-cert: DFN-CERT-2017-0351
+ dfn-cert: DFN-CERT-2017-0090
+ dfn-cert: DFN-CERT-2017-0089
+ dfn-cert: DFN-CERT-2017-0088
+ dfn-cert: DFN-CERT-2017-0086
+ dfn-cert: DFN-CERT-2016-1943
+ dfn-cert: DFN-CERT-2016-1937
+ dfn-cert: DFN-CERT-2016-1732
+ dfn-cert: DFN-CERT-2016-1726
+ dfn-cert: DFN-CERT-2016-1715
+ dfn-cert: DFN-CERT-2016-1714
+ dfn-cert: DFN-CERT-2016-1588
+ dfn-cert: DFN-CERT-2016-1555
+ dfn-cert: DFN-CERT-2016-1391
+ dfn-cert: DFN-CERT-2016-1378
+
+
+Issue
+-----
+NVT:    HTTP Debugging Methods (TRACE/TRACK) Enabled
+OID:    1.3.6.1.4.1.25623.1.0.11213
+Threat: Medium (CVSS: 5.8)
+Port:   80/tcp
+
+Summary:
+The remote web server supports the TRACE and/or TRACK
+  methods. TRACE and TRACK are HTTP methods which are used to debug web server c!
+onnections.
+
+Vulnerability Detection Result:
+The web server has the following HTTP methods enabled: TRACE
+
+Impact:
+An attacker may use this flaw to trick your legitimate web
+  users to give him their credentials.
+
+Solution:
+Solution type: Mitigation
+Disable the TRACE and TRACK methods in your web server
+  configuration.
+  Please see the manual of your web server or the references for more informatio!
+n.
+
+Affected Software/OS:
+Web servers with enabled TRACE and/or TRACK methods.
+
+Vulnerability Insight:
+It has been shown that web servers supporting this methods
+  are subject to cross-site-scripting attacks, dubbed XST for Cross-Site-Tracing!
+, when used in
+  conjunction with various weaknesses in browsers.
+
+Vulnerability Detection Method:
+Checks if HTTP methods such as TRACE and TRACK are
+  enabled and can be used.
+Details:
+HTTP Debugging Methods (TRACE/TRACK) Enabled
+(OID: 1.3.6.1.4.1.25623.1.0.11213)
+Version used: 2022-05-12T09:32:01Z
+
+References:
+ cve: CVE-2003-1567
+ cve: CVE-2004-2320
+ cve: CVE-2004-2763
+ cve: CVE-2005-3398
+ cve: CVE-2006-4683
+ cve: CVE-2007-3008
+ cve: CVE-2008-7253
+ cve: CVE-2009-2823
+ cve: CVE-2010-0386
+ cve: CVE-2012-2223
+ cve: CVE-2014-7883
+ url: http://www.kb.cert.org/vuls/id/288308
+ url: http://www.securityfocus.com/bid/11604
+ url: http://www.securityfocus.com/bid/15222
+ url: http://www.securityfocus.com/bid/19915
+ url: http://www.securityfocus.com/bid/24456
+ url: http://www.securityfocus.com/bid/33374
+ url: http://www.securityfocus.com/bid/36956
+ url: http://www.securityfocus.com/bid/36990
+ url: http://www.securityfocus.com/bid/37995
+ url: http://www.securityfocus.com/bid/9506
+ url: http://www.securityfocus.com/bid/9561
+ url: http://www.kb.cert.org/vuls/id/867593
+ url: https://httpd.apache.org/docs/current/en/mod/core.html#traceenable
+ url: https://techcommunity.microsoft.com/t5/iis-support-blog/http-track-and-trace-verbs/ba-p/784482
+ url: https://owasp.org/www-community/attacks/Cross_Site_Tracing
+ cert-bund: CB-K14/0981
+ dfn-cert: DFN-CERT-2021-1825
+ dfn-cert: DFN-CERT-2014-1018
+ dfn-cert: DFN-CERT-2010-0020
+
+
+Issue
+-----
+NVT:    Weak Key Exchange (KEX) Algorithm(s) Supported (SSH)
+OID:    1.3.6.1.4.1.25623.1.0.150713
+Threat: Medium (CVSS: 5.3)
+Port:   22/tcp
+
+Summary:
+The remote SSH server is configured to allow / support weak key
+  exchange (KEX) algorithm(s).
+
+Vulnerability Detection Result:
+The remote SSH server supports the following weak KEX algorithm(s):
+KEX algorithm                      | Reason
+--------------------------------------------------------------------------------!
+-----------
+diffie-hellman-group-exchange-sha1 | Using SHA-1
+diffie-hellman-group1-sha1         | Using Oakley Group 2 (a 1024-bit MODP group!
+) and SHA-1
+
+Impact:
+An attacker can quickly break individual connections.
+
+Solution:
+Solution type: Mitigation
+Disable the reported weak KEX algorithm(s)
+  - 1024-bit MODP group / prime KEX algorithms:
+  Alternatively use elliptic-curve Diffie-Hellmann in general, e.g. Curve 25519.
+
+Vulnerability Insight:
+- 1024-bit MODP group / prime KEX algorithms:
+  Millions of HTTPS, SSH, and VPN servers all use the same prime numbers for Dif!
+fie-Hellman key
+  exchange. Practitioners believed this was safe as long as new key exchange mes!
+sages were generated
+  for every connection. However, the first step in the number field sieve-the mo!
+st efficient
+  algorithm for breaking a Diffie-Hellman connection-is dependent only on this p!
+rime.
+  A nation-state can break a 1024-bit prime.
+
+Vulnerability Detection Method:
+Checks the supported KEX algorithms of the remote SSH server.
+  Currently weak KEX algorithms are defined as the following:
+  - non-elliptic-curve Diffie-Hellmann (DH) KEX algorithms with 1024-bit MODP gr!
+oup / prime
+  - ephemerally generated key exchange groups uses SHA-1
+  - using RSA 1024-bit modulus key
+Details:
+Weak Key Exchange (KEX) Algorithm(s) Supported (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.150713)
+Version used: 2021-11-24T06:31:19Z
+
+References:
+ url: https://weakdh.org/sysadmin.html
+ url: https://tools.ietf.org/id/draft-ietf-curdle-ssh-kex-sha2-09.html
+ url: https://tools.ietf.org/id/draft-ietf-curdle-ssh-kex-sha2-09.html#rfc.section.5
+ url: https://datatracker.ietf.org/doc/html/rfc6194
+
+
+Issue
+-----
+NVT:    SSL/TLS: Report Weak Cipher Suites
+OID:    1.3.6.1.4.1.25623.1.0.103440
+Threat: Medium (CVSS: 5.0)
+Port:   10000/tcp
+
+Summary:
+This routine reports all Weak SSL/TLS cipher suites accepted
+  by a service.
+  NOTE: No severity for SMTP services with 'Opportunistic TLS' and weak cipher s!
+uites on port
+  25/tcp is reported. If too strong cipher suites are configured for this servic!
+e the alternative
+  would be to fall back to an even more insecure cleartext communication.
+
+Vulnerability Detection Result:
+'Weak' cipher suites accepted by this service via the TLSv1.2 protocol:
+TLS_RSA_WITH_SEED_CBC_SHA
+
+Solution:
+Solution type: Mitigation
+The configuration of this services should be changed so
+  that it does not accept the listed weak cipher suites anymore.
+  Please see the references for more resources supporting you with this task.
+
+Vulnerability Insight:
+These rules are applied for the evaluation of the cryptographic
+  strength:
+  - RC4 is considered to be weak (CVE-2013-2566, CVE-2015-2808)
+  - Ciphers using 64 bit or less are considered to be vulnerable to brute force !
+methods
+  and therefore considered as weak (CVE-2015-4000)
+  - 1024 bit RSA authentication is considered to be insecure and therefore as we!
+ak
+  - Any cipher considered to be secure for only the next 10 years is considered !
+as medium
+  - Any other cipher is considered as strong
+
+Vulnerability Detection Method:
+Details:
+SSL/TLS: Report Weak Cipher Suites
+(OID: 1.3.6.1.4.1.25623.1.0.103440)
+Version used: 2021-12-01T13:10:37Z
+
+References:
+ cve: CVE-2013-2566
+ cve: CVE-2015-2808
+ cve: CVE-2015-4000
+ url: https://www.bsi.bund.de/SharedDocs/Warnmeldungen/DE/CB/warnmeldung_cb-k16-1465_update_6.html
+ url: https://bettercrypto.org/
+ url: https://mozilla.github.io/server-side-tls/ssl-config-generator/
+ cert-bund: CB-K21/0067
+ cert-bund: CB-K19/0812
+ cert-bund: CB-K17/1750
+ cert-bund: CB-K16/1593
+ cert-bund: CB-K16/1552
+ cert-bund: CB-K16/1102
+ cert-bund: CB-K16/0617
+ cert-bund: CB-K16/0599
+ cert-bund: CB-K16/0168
+ cert-bund: CB-K16/0121
+ cert-bund: CB-K16/0090
+ cert-bund: CB-K16/0030
+ cert-bund: CB-K15/1751
+ cert-bund: CB-K15/1591
+ cert-bund: CB-K15/1550
+ cert-bund: CB-K15/1517
+ cert-bund: CB-K15/1514
+ cert-bund: CB-K15/1464
+ cert-bund: CB-K15/1442
+ cert-bund: CB-K15/1334
+ cert-bund: CB-K15/1269
+ cert-bund: CB-K15/1136
+ cert-bund: CB-K15/1090
+ cert-bund: CB-K15/1059
+ cert-bund: CB-K15/1022
+ cert-bund: CB-K15/1015
+ cert-bund: CB-K15/0986
+ cert-bund: CB-K15/0964
+ cert-bund: CB-K15/0962
+ cert-bund: CB-K15/0932
+ cert-bund: CB-K15/0927
+ cert-bund: CB-K15/0926
+ cert-bund: CB-K15/0907
+ cert-bund: CB-K15/0901
+ cert-bund: CB-K15/0896
+ cert-bund: CB-K15/0889
+ cert-bund: CB-K15/0877
+ cert-bund: CB-K15/0850
+ cert-bund: CB-K15/0849
+ cert-bund: CB-K15/0834
+ cert-bund: CB-K15/0827
+ cert-bund: CB-K15/0802
+ cert-bund: CB-K15/0764
+ cert-bund: CB-K15/0733
+ cert-bund: CB-K15/0667
+ cert-bund: CB-K14/0935
+ cert-bund: CB-K13/0942
+ dfn-cert: DFN-CERT-2021-0775
+ dfn-cert: DFN-CERT-2020-1561
+ dfn-cert: DFN-CERT-2020-1276
+ dfn-cert: DFN-CERT-2017-1821
+ dfn-cert: DFN-CERT-2016-1692
+ dfn-cert: DFN-CERT-2016-1648
+ dfn-cert: DFN-CERT-2016-1168
+ dfn-cert: DFN-CERT-2016-0665
+ dfn-cert: DFN-CERT-2016-0642
+ dfn-cert: DFN-CERT-2016-0184
+ dfn-cert: DFN-CERT-2016-0135
+ dfn-cert: DFN-CERT-2016-0101
+ dfn-cert: DFN-CERT-2016-0035
+ dfn-cert: DFN-CERT-2015-1853
+ dfn-cert: DFN-CERT-2015-1679
+ dfn-cert: DFN-CERT-2015-1632
+ dfn-cert: DFN-CERT-2015-1608
+ dfn-cert: DFN-CERT-2015-1542
+ dfn-cert: DFN-CERT-2015-1518
+ dfn-cert: DFN-CERT-2015-1406
+ dfn-cert: DFN-CERT-2015-1341
+ dfn-cert: DFN-CERT-2015-1194
+ dfn-cert: DFN-CERT-2015-1144
+ dfn-cert: DFN-CERT-2015-1113
+ dfn-cert: DFN-CERT-2015-1078
+ dfn-cert: DFN-CERT-2015-1067
+ dfn-cert: DFN-CERT-2015-1038
+ dfn-cert: DFN-CERT-2015-1016
+ dfn-cert: DFN-CERT-2015-1012
+ dfn-cert: DFN-CERT-2015-0980
+ dfn-cert: DFN-CERT-2015-0977
+ dfn-cert: DFN-CERT-2015-0976
+ dfn-cert: DFN-CERT-2015-0960
+ dfn-cert: DFN-CERT-2015-0956
+ dfn-cert: DFN-CERT-2015-0944
+ dfn-cert: DFN-CERT-2015-0937
+ dfn-cert: DFN-CERT-2015-0925
+ dfn-cert: DFN-CERT-2015-0884
+ dfn-cert: DFN-CERT-2015-0881
+ dfn-cert: DFN-CERT-2015-0879
+ dfn-cert: DFN-CERT-2015-0866
+ dfn-cert: DFN-CERT-2015-0844
+ dfn-cert: DFN-CERT-2015-0800
+ dfn-cert: DFN-CERT-2015-0737
+ dfn-cert: DFN-CERT-2015-0696
+ dfn-cert: DFN-CERT-2014-0977
+
+
+Issue
+-----
+NVT:    Cleartext Transmission of Sensitive Information via HTTP
+OID:    1.3.6.1.4.1.25623.1.0.108440
+Threat: Medium (CVSS: 4.8)
+Port:   80/tcp
+
+Summary:
+The host / application transmits sensitive information (username, passwords) in
+  cleartext via HTTP.
+
+Vulnerability Detection Result:
+The following input fields where identified (URL:input name):
+http://10.0.0.25/cms/includes/sidebar.php:user_password
+
+Impact:
+An attacker could use this situation to compromise or eavesdrop on the
+  HTTP communication between the client and the server using a man-in-the-middle!
+ attack to get access to
+  sensitive data like usernames or passwords.
+
+Solution:
+Solution type: Workaround
+Enforce the transmission of sensitive data via an encrypted SSL/TLS connection.
+  Additionally make sure the host / application is redirecting all users to the !
+secured SSL/TLS connection before
+  allowing to input sensitive data into the mentioned functions.
+
+Affected Software/OS:
+Hosts / applications which doesn t enforce the transmission of sensitive data vi!
+a an
+  encrypted SSL/TLS connection.
+
+Vulnerability Detection Method:
+Evaluate previous collected information and check if the host / application is n!
+ot
+  enforcing the transmission of sensitive data via an encrypted SSL/TLS connecti!
+on.
+  The script is currently checking the following:
+  - HTTP Basic Authentication (Basic Auth)
+  - HTTP Forms (e.g. Login) with input field of type 'password'
+Details:
+Cleartext Transmission of Sensitive Information via HTTP
+(OID: 1.3.6.1.4.1.25623.1.0.108440)
+Version used: 2020-08-24T15:18:35Z
+
+References:
+ url: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management
+ url: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure
+ url: https://cwe.mitre.org/data/definitions/319.html
+
+
+Issue
+-----
+NVT:    Weak Encryption Algorithm(s) Supported (SSH)
+OID:    1.3.6.1.4.1.25623.1.0.105611
+Threat: Medium (CVSS: 4.3)
+Port:   22/tcp
+
+Summary:
+The remote SSH server is configured to allow / support weak
+  encryption algorithm(s).
+
+Vulnerability Detection Result:
+The remote SSH server supports the following weak client-to-server encryption al!
+gorithm(s):
+3des-cbc
+aes128-cbc
+aes192-cbc
+aes256-cbc
+blowfish-cbc
+cast128-cbc
+The remote SSH server supports the following weak server-to-client encryption al!
+gorithm(s):
+3des-cbc
+aes128-cbc
+aes192-cbc
+aes256-cbc
+blowfish-cbc
+cast128-cbc
+
+Solution:
+Solution type: Mitigation
+Disable the reported weak encryption algorithm(s).
+
+Vulnerability Insight:
+- The 'arcfour' cipher is the Arcfour stream cipher with 128-bit
+  keys. The Arcfour cipher is believed to be compatible with the RC4 cipher [SCH!
+NEIER]. Arcfour
+  (and RC4) has problems with weak keys, and should not be used anymore.
+  - The 'none' algorithm specifies that no encryption is to be done. Note that t!
+his method provides
+  no confidentiality protection, and it is NOT RECOMMENDED to use it.
+  - A vulnerability exists in SSH messages that employ CBC mode that may allow a!
+n attacker to
+  recover plaintext from a block of ciphertext.
+
+Vulnerability Detection Method:
+Checks the supported encryption algorithms (client-to-server
+  and server-to-client) of the remote SSH server.
+  Currently weak encryption algorithms are defined as the following:
+  - Arcfour (RC4) cipher based algorithms
+  - none algorithm
+  - CBC mode cipher based algorithms
+Details:
+Weak Encryption Algorithm(s) Supported (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.105611)
+Version used: 2021-09-20T08:25:27Z
+
+References:
+ url: https://tools.ietf.org/html/rfc4253#section-6.3
+ url: https://www.kb.cert.org/vuls/id/958563
+
+
+Issue
+-----
+NVT:    TCP timestamps
+OID:    1.3.6.1.4.1.25623.1.0.80091
+Threat: Low (CVSS: 2.6)
+Port:   general/tcp
+
+Summary:
+The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.
+
+Vulnerability Detection Result:
+It was detected that the host implements RFC1323/RFC7323.
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 1107937657
+Packet 2: 1107938761
+
+Impact:
+A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.
+
+Solution:
+Solution type: Mitigation
+To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timesta!
+mps=disabled'
+  Starting with Windows Server 2008 and Vista, the timestamp can not be complete!
+ly disabled.
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP pee!
+r
+  that is initiating communication includes them in their synchronize (SYN) segm!
+ent.
+  See the references for more information.
+
+Affected Software/OS:
+TCP implementations that implement RFC1323/RFC7323.
+
+Vulnerability Insight:
+The remote host implements TCP timestamps, as defined by RFC1323/RFC7323.
+
+Vulnerability Detection Method:
+Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestam!
+ps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2020-08-24T08:40:10Z
+
+References:
+ url: http://www.ietf.org/rfc/rfc1323.txt
+ url: http://www.ietf.org/rfc/rfc7323.txt
+ url: https://web.archive.org/web/20151213072445/http://www.microsoft.com/en-us/download/details.aspx?id=9152
+
+

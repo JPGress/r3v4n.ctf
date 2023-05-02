@@ -1,0 +1,589 @@
+I Summary
+=========
+
+This document reports on the results of an automatic security scan.
+The report first summarises the results found.
+Then, for each host, the report describes every issue found.
+Please consider the advice given in each description, in order to rectify
+the issue.
+
+All dates are displayed using the timezone "America/Sao_Paulo",
+which is abbreviated "-03".
+
+Vendor security updates are not trusted.
+
+Overrides are off.  Even when a result has an override, this report uses
+the actual threat of the result.
+
+Notes are included in the report.Information on overrides is included in the report.
+
+This report might not show details of all issues that were found.
+Issues with the threat level "Debug" are not shown.
+Issues with the threat level "False Positive" are not shown.
+Only results with a minimum QoD of 35 are shown.
+
+This report contains all 13 results selected by the
+filtering described above.  Before filtering there were 36 results.
+
+Scan started: Fri Jul 29 12:39:28 2022 -03
+Scan ended:   Fri Jul 29 12:44:53 2022 -03
+Task:         Immediate scan of IP 10.0.0.16
+
+Host Summary
+************
+
+Host            High  Medium  Low  Log  False Positive
+10.0.0.16          0       1    1   11               0
+Total: 1           0       1    1   11               0
+
+
+II Results per Host
+===================
+
+Host 10.0.0.16
+**************
+
+Scanning of this host started at: Fri Jul 29 12:39:49 2022 -03
+Number of results: 13
+
+Port Summary for Host 10.0.0.16
+-------------------------------
+
+Service (Port)          Threat Level
+general/icmp            Log
+general/CPE-T           Log
+80/tcp                  Medium
+general/tcp             Low
+
+Security Issues for Host 10.0.0.16
+----------------------------------
+
+Issue
+-----
+NVT:    Cleartext Transmission of Sensitive Information via HTTP
+OID:    1.3.6.1.4.1.25623.1.0.108440
+Threat: Medium (CVSS: 4.8)
+Port:   80/tcp
+
+Summary:
+The host / application transmits sensitive information (username, passwords) in
+  cleartext via HTTP.
+
+Vulnerability Detection Result:
+The following input fields where identified (URL:input name):
+http://10.0.0.16/:pass
+http://10.0.0.16/cadastra.php:pass
+
+Impact:
+An attacker could use this situation to compromise or eavesdrop on the
+  HTTP communication between the client and the server using a man-in-the-middle!
+ attack to get access to
+  sensitive data like usernames or passwords.
+
+Solution:
+Solution type: Workaround
+Enforce the transmission of sensitive data via an encrypted SSL/TLS connection.
+  Additionally make sure the host / application is redirecting all users to the !
+secured SSL/TLS connection before
+  allowing to input sensitive data into the mentioned functions.
+
+Affected Software/OS:
+Hosts / applications which doesn't enforce the transmission of sensitive data vi!
+a an
+  encrypted SSL/TLS connection.
+
+Vulnerability Detection Method:
+Evaluate previous collected information and check if the host / application is n!
+ot
+  enforcing the transmission of sensitive data via an encrypted SSL/TLS connecti!
+on.
+  The script is currently checking the following:
+  - HTTP Basic Authentication (Basic Auth)
+  - HTTP Forms (e.g. Login) with input field of type 'password'
+Details:
+Cleartext Transmission of Sensitive Information via HTTP
+(OID: 1.3.6.1.4.1.25623.1.0.108440)
+Version used: 2020-08-24T15:18:35Z
+
+References:
+ url: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management
+ url: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure
+ url: https://cwe.mitre.org/data/definitions/319.html
+
+
+Issue
+-----
+NVT:    TCP timestamps
+OID:    1.3.6.1.4.1.25623.1.0.80091
+Threat: Low (CVSS: 2.6)
+Port:   general/tcp
+
+Summary:
+The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.
+
+Vulnerability Detection Result:
+It was detected that the host implements RFC1323/RFC7323.
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 3178321136
+Packet 2: 3178322223
+
+Impact:
+A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.
+
+Solution:
+Solution type: Mitigation
+To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timesta!
+mps=disabled'
+  Starting with Windows Server 2008 and Vista, the timestamp can not be complete!
+ly disabled.
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP pee!
+r
+  that is initiating communication includes them in their synchronize (SYN) segm!
+ent.
+  See the references for more information.
+
+Affected Software/OS:
+TCP implementations that implement RFC1323/RFC7323.
+
+Vulnerability Insight:
+The remote host implements TCP timestamps, as defined by RFC1323/RFC7323.
+
+Vulnerability Detection Method:
+Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestam!
+ps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2020-08-24T08:40:10Z
+
+References:
+ url: http://www.ietf.org/rfc/rfc1323.txt
+ url: http://www.ietf.org/rfc/rfc7323.txt
+ url: https://web.archive.org/web/20151213072445/http://www.microsoft.com/en-us/download/details.aspx?id=9152
+
+
+Issue
+-----
+NVT:    OS Detection Consolidation and Reporting
+OID:    1.3.6.1.4.1.25623.1.0.105937
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+This script consolidates the OS information detected by several
+  VTs and tries to find the best matching OS.
+  Furthermore it reports all previously collected information leading to this be!
+st matching OS. It
+  also reports possible additional information which might help to improve the O!
+S detection.
+  If any of this information is wrong or could be improved please consider to re!
+port these to the
+  referenced community portal.
+
+Vulnerability Detection Result:
+Best matching OS:
+OS:           Debian GNU/Linux 10
+Version:      10
+CPE:          cpe:/o:debian:debian_linux:10
+Found by NVT: 1.3.6.1.4.1.25623.1.0.111067 (Operating System (OS) Detection (HTT!
+P))
+Concluded from HTTP Server banner on port 80/tcp: Server: Apache/2.4.38 (Debian)
+Setting key "Host/runs_unixoide" based on this information
+
+Solution:
+
+Log Method:
+Details:
+OS Detection Consolidation and Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.105937)
+Version used: 2022-07-07T10:16:06Z
+
+References:
+ url: https://community.greenbone.net/c/vulnerability-tests
+
+
+Issue
+-----
+NVT:    Traceroute
+OID:    1.3.6.1.4.1.25623.1.0.51662
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+Collect information about the network route and
+  network distance between the scanner host and the target host.
+
+Vulnerability Detection Result:
+Network route from scanner (172.30.3.226) to target (10.0.0.16):
+172.30.3.226
+10.0.0.16
+Network distance between scanner and target: 2
+
+Solution:
+
+Vulnerability Insight:
+For internal networks, the distances are usually
+  small, often less than 4 hosts between scanner and target. For public targets !
+the
+  distance is greater and might be 10 hosts or more.
+
+Log Method:
+A combination of the protocols ICMP and TCP is used
+  to determine the route. This method is applicable for IPv4 only and it is also!
+ known as
+  'traceroute'.
+Details:
+Traceroute
+(OID: 1.3.6.1.4.1.25623.1.0.51662)
+Version used: 2021-03-12T14:25:59Z
+
+
+Issue
+-----
+NVT:    HTTP Server type and version
+OID:    1.3.6.1.4.1.25623.1.0.10107
+Threat: Log (CVSS: 0.0)
+Port:   80/tcp
+
+Summary:
+This script detects and reports the HTTP Server's banner
+  which might provide the type and version of it.
+
+Vulnerability Detection Result:
+The remote HTTP Server banner is:
+Server: Apache/2.4.38 (Debian)
+
+Solution:
+
+Log Method:
+Details:
+HTTP Server type and version
+(OID: 1.3.6.1.4.1.25623.1.0.10107)
+Version used: 2020-08-24T15:18:35Z
+
+
+Issue
+-----
+NVT:    ICMP Timestamp Detection
+OID:    1.3.6.1.4.1.25623.1.0.103190
+Threat: Log (CVSS: 0.0)
+Port:   general/icmp
+
+Summary:
+The remote host responded to an ICMP timestamp request.
+  The Timestamp Reply is an ICMP message which replies to a Timestamp message. I!
+t consists
+  of the originating timestamp sent by the sender of the Timestamp as well as a !
+receive
+  timestamp and a transmit timestamp. This information could theoretically be us!
+ed to
+  exploit weak time-based random number generators in other services.
+
+Vulnerability Detection Result:
+Vulnerability was detected according to the Vulnerability Detection Method.
+
+Solution:
+
+Log Method:
+Details:
+ICMP Timestamp Detection
+(OID: 1.3.6.1.4.1.25623.1.0.103190)
+Version used: 2021-03-23T06:51:29Z
+
+References:
+ cve: CVE-1999-0524
+ url: http://www.ietf.org/rfc/rfc0792.txt
+ cert-bund: CB-K15/1514
+ cert-bund: CB-K14/0632
+ dfn-cert: DFN-CERT-2014-0658
+
+
+Issue
+-----
+NVT:    HTTP Server Banner Enumeration
+OID:    1.3.6.1.4.1.25623.1.0.108708
+Threat: Log (CVSS: 0.0)
+Port:   80/tcp
+
+Summary:
+This script tries to detect / enumerate different HTTP server
+  banner (e.g. from a frontend, backend or proxy server) by sending various diff!
+erent HTTP requests
+  (valid and invalid ones).
+
+Vulnerability Detection Result:
+It was possible to enumerate the following HTTP server banner(s):
+Server banner                  | Enumeration technique
+--------------------------------------------------------------------------------!
+-----------------
+Server: Apache/2.4.38 (Debian) | Invalid HTTP 00.5 GET request (non-existent HTT!
+P version) to '/'
+
+Solution:
+
+Log Method:
+Details:
+HTTP Server Banner Enumeration
+(OID: 1.3.6.1.4.1.25623.1.0.108708)
+Version used: 2022-06-28T10:11:01Z
+
+
+Issue
+-----
+NVT:    CGI Scanning Consolidation
+OID:    1.3.6.1.4.1.25623.1.0.111038
+Threat: Log (CVSS: 0.0)
+Port:   80/tcp
+
+Summary:
+The script consolidates various information for CGI scanning.
+  This information is based on the following scripts / settings:
+  - HTTP-Version Detection (OID: 1.3.6.1.4.1.25623.1.0.100034)
+  - No 404 check (OID: 1.3.6.1.4.1.25623.1.0.10386)
+  - Web mirroring / webmirror.nasl (OID: 1.3.6.1.4.1.25623.1.0.10662)
+  - Directory Scanner / DDI_Directory_Scanner.nasl (OID: 1.3.6.1.4.1.25623.1.0.1!
+1032)
+  - The configured 'cgi_path' within the 'Scanner Preferences' of the scan confi!
+g in use
+  - The configured 'Enable CGI scanning', 'Enable generic web application scanni!
+ng' and
+    'Add historic /scripts and /cgi-bin to directories for CGI scanning' within !
+the
+    'Global variable settings' of the scan config in use
+  If you think any of this information is wrong please report it to the referenc!
+ed community portal.
+
+Vulnerability Detection Result:
+The Hostname/IP "10.0.0.16" was used to access the remote host.
+Generic web application scanning is disabled for this host via the "Enable gener!
+ic web application scanning" option within the "Global variable settings" of the!
+ scan config in use.
+Requests to this service are done via HTTP/1.1.
+This service seems to be able to host PHP scripts.
+This service seems to be NOT able to host ASP scripts.
+The User-Agent "Mozilla/5.0 [en] (X11, U; OpenVAS-VT 21.4.4)" was used to access!
+ the remote host.
+Historic /scripts and /cgi-bin are not added to the directories used for CGI sca!
+nning. You can enable this again with the "Add historic /scripts and /cgi-bin to!
+ directories for CGI scanning" option within the "Global variable settings" of t!
+he scan config in use.
+The following directories were used for CGI scanning:
+http://10.0.0.16/
+While this is not, in and of itself, a bug, you should manually inspect these di!
+rectories to ensure that they are in compliance with company security standards
+The following directories were excluded from CGI scanning because the "Regex pat!
+tern to exclude directories from CGI scanning" setting of the NVT "Global variab!
+le settings" (OID: 1.3.6.1.4.1.25623.1.0.12288) for this scan was: "/(index\.php!
+|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture!
+|bilder|thumbnail|media/|skins?/)"
+http://10.0.0.16/icons
+http://10.0.0.16/index.php/wp-json
+The following CGIs were discovered:
+Syntax : cginame (arguments [default value])
+http://10.0.0.16/cadastra.php (user [] pass [] tipo [YWx1bm8=] )
+http://10.0.0.16/login.php (user [] pass [] )
+
+Solution:
+
+Log Method:
+Details:
+CGI Scanning Consolidation
+(OID: 1.3.6.1.4.1.25623.1.0.111038)
+Version used: 2022-03-24T09:16:49Z
+
+References:
+ url: https://community.greenbone.net/c/vulnerability-tests
+
+
+Issue
+-----
+NVT:    HTTP Security Headers Detection
+OID:    1.3.6.1.4.1.25623.1.0.112081
+Threat: Log (CVSS: 0.0)
+Port:   80/tcp
+
+Summary:
+All known security headers are being checked on the remote web
+  server.
+  On completion a report will hand back whether a specific security header has b!
+een implemented
+  (including its value and if it is deprecated) or is missing on the target.
+
+Vulnerability Detection Result:
+Missing Headers                   | More Information
+--------------------------------------------------------------------------------!
+--------------------------------------------------------------------------------!
+----------------------------------------------
+Content-Security-Policy           | https://owasp.org/www-project-secure-headers!
+/#content-security-policy
+Cross-Origin-Embedder-Policy      | https://scotthelme.co.uk/coop-and-coep/, Not!
+e: This is an upcoming header
+Cross-Origin-Opener-Policy        | https://scotthelme.co.uk/coop-and-coep/, Not!
+e: This is an upcoming header
+Cross-Origin-Resource-Policy      | https://scotthelme.co.uk/coop-and-coep/, Not!
+e: This is an upcoming header
+Document-Policy                   | https://w3c.github.io/webappsec-feature-poli!
+cy/document-policy#document-policy-http-header
+Feature-Policy                    | https://owasp.org/www-project-secure-headers!
+/#feature-policy, Note: The Feature Policy header has been renamed to Permission!
+s Policy
+Permissions-Policy                | https://w3c.github.io/webappsec-feature-poli!
+cy/#permissions-policy-http-header-field
+Referrer-Policy                   | https://owasp.org/www-project-secure-headers!
+/#referrer-policy
+Sec-Fetch-Dest                    | https://developer.mozilla.org/en-US/docs/Web!
+/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header support!
+ed only in newer browsers like e.g. Firefox 90
+Sec-Fetch-Mode                    | https://developer.mozilla.org/en-US/docs/Web!
+/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header support!
+ed only in newer browsers like e.g. Firefox 90
+Sec-Fetch-Site                    | https://developer.mozilla.org/en-US/docs/Web!
+/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header support!
+ed only in newer browsers like e.g. Firefox 90
+Sec-Fetch-User                    | https://developer.mozilla.org/en-US/docs/Web!
+/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header support!
+ed only in newer browsers like e.g. Firefox 90
+X-Content-Type-Options            | https://owasp.org/www-project-secure-headers!
+/#x-content-type-options
+X-Frame-Options                   | https://owasp.org/www-project-secure-headers!
+/#x-frame-options
+X-Permitted-Cross-Domain-Policies | https://owasp.org/www-project-secure-headers!
+/#x-permitted-cross-domain-policies
+X-XSS-Protection                  | https://owasp.org/www-project-secure-headers!
+/#x-xss-protection, Note: Most major browsers have dropped / deprecated support !
+for this header in 2020.
+
+Solution:
+
+Log Method:
+Details:
+HTTP Security Headers Detection
+(OID: 1.3.6.1.4.1.25623.1.0.112081)
+Version used: 2021-07-14T06:19:43Z
+
+References:
+ url: https://owasp.org/www-project-secure-headers/
+ url: https://owasp.org/www-project-secure-headers/#div-headers
+ url: https://securityheaders.com/
+
+
+Issue
+-----
+NVT:    Hostname Determination Reporting
+OID:    1.3.6.1.4.1.25623.1.0.108449
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+The script reports information on how the hostname
+  of the target was determined.
+
+Vulnerability Detection Result:
+Hostname determination for IP 10.0.0.16:
+Hostname|Source
+10.0.0.16|IP-address
+
+Solution:
+
+Log Method:
+Details:
+Hostname Determination Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.108449)
+Version used: 2018-11-19T11:11:31Z
+
+
+Issue
+-----
+NVT:    Services
+OID:    1.3.6.1.4.1.25623.1.0.10330
+Threat: Log (CVSS: 0.0)
+Port:   80/tcp
+
+Summary:
+This routine attempts to guess which service is running on the
+  remote ports. For instance, it searches for a web server which could listen on!
+ another port than
+  80 or 443 and makes this information available for other check routines.
+
+Vulnerability Detection Result:
+A web server is running on this port
+
+Solution:
+
+Log Method:
+Details:
+Services
+(OID: 1.3.6.1.4.1.25623.1.0.10330)
+Version used: 2021-03-15T10:42:03Z
+
+
+Issue
+-----
+NVT:    CPE Inventory
+OID:    1.3.6.1.4.1.25623.1.0.810002
+Threat: Log (CVSS: 0.0)
+Port:   general/CPE-T
+
+Summary:
+This routine uses information collected by other routines about
+  CPE identities of operating systems, services and applications detected during!
+ the scan.
+  Note: Some CPEs for specific products might show up twice or more in the outpu!
+t. Background:
+  After a product got renamed or a specific vendor was acquired by another one i!
+t might happen that a
+  product gets a new CPE within the NVD CPE Dictionary but older entries are kep!
+t with the older CPE.
+
+Vulnerability Detection Result:
+10.0.0.16|cpe:/a:apache:http_server:2.4.38
+10.0.0.16|cpe:/o:debian:debian_linux:10
+
+Solution:
+
+Log Method:
+Details:
+CPE Inventory
+(OID: 1.3.6.1.4.1.25623.1.0.810002)
+Version used: 2021-04-16T10:39:13Z
+
+References:
+ url: https://nvd.nist.gov/products/cpe
+
+
+Issue
+-----
+NVT:    Apache HTTP Server Detection Consolidation
+OID:    1.3.6.1.4.1.25623.1.0.117232
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+Consolidation of Apache HTTP Server detections.
+
+Vulnerability Detection Result:
+Detected Apache HTTP Server
+Version:       2.4.38
+Location:      80/tcp
+CPE:           cpe:/a:apache:http_server:2.4.38
+Concluded from version/product identification result:
+Server: Apache/2.4.38 (Debian)
+
+Solution:
+
+Log Method:
+Details:
+Apache HTTP Server Detection Consolidation
+(OID: 1.3.6.1.4.1.25623.1.0.117232)
+Version used: 2021-02-25T13:36:35Z
+
+References:
+ url: https://httpd.apache.org
+
+

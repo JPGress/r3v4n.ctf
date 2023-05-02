@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jul 21 16:35:16 2022 as: nmap -vv -&#45;reason -sV -sC -Pn -&#45;min-rate=400 -T4 -&#45;script-timeout 10m -p- -oN results/10.0.0.27/0_tcp_nmap.txt -oX results/10.0.0.27/0_tcp_nmap.xml 10.0.0.27 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -sV -sC -Pn -&#45;min-rate=400 -T4 -&#45;script-timeout 10m -p- -oN results/10.0.0.27/0_tcp_nmap.txt -oX results/10.0.0.27/0_tcp_nmap.xml 10.0.0.27" start="1658432116" startstr="Thu Jul 21 16:35:16 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1658432117"/>
+<taskend task="NSE" time="1658432117"/>
+<taskbegin task="NSE" time="1658432117"/>
+<taskend task="NSE" time="1658432117"/>
+<taskbegin task="NSE" time="1658432117"/>
+<taskend task="NSE" time="1658432117"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1658432117"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1658432117"/>
+<taskbegin task="SYN Stealth Scan" time="1658432117"/>
+<taskend task="SYN Stealth Scan" time="1658432128" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1658432128"/>
+<taskend task="Service scan" time="1658432135" extrainfo="2 services on 1 host"/>
+<taskbegin task="NSE" time="1658432135"/>
+<taskend task="NSE" time="1658432135"/>
+<taskbegin task="NSE" time="1658432135"/>
+<taskend task="NSE" time="1658432135"/>
+<taskbegin task="NSE" time="1658432135"/>
+<taskend task="NSE" time="1658432135"/>
+<host starttime="1658432117" endtime="1658432135"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.0.0.27" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65533">
+<extrareasons reason="reset" count="65533" proto="tcp" ports="1-21,23-79,81-65535"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="ssh" product="OpenSSH" version="5.9p1 Debian 5ubuntu1.10" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:5.9p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  1024 01:1b:c8:fe:18:71:28:60:84:6a:9f:30:35:11:66:3d (DSA)&#xa;ssh-dss AAAAB3NzaC1kc3MAAACBAIvXzKChMFQjoRVJPY3oKyzdX27i0MDEbmLG3yRuSLiPgYBF4jGq+7mn848WJSbLPpNAa/6xMgQb5BhhSTHgA77kg1gS8IhXvpoMlixJoJmGVBAqobxKAEbZnfbSKfjtJk7jI9mfoZjmOhznnzEwsODjzEDqtBYGEo4Mf/9KUX/jAAAAFQCdv46IJ36Dkyv7av5KP+Ghs7TzSwAAAIAVxh4PVUljX8ECckYq40LJ/jRL4qWhLSctMRK9J34+WSe2RHpRKRB+0eTpjffzNktRgFgKJJwW+3kd4HzOROMDvLEuhdrALiiNwqxYzIv70i+mwxNWoghoUcslgXOmeTAvyiW/jNU/Uav39nutehkX62PfvTRrulRzlbayMbkU4AAAAIABwdKXqzEKdPr7L+bCBLEe06k3Vd2bWvTOD3wwGzz+rzvmcexiPvgc1xRYE6Fno0QG2yfow9cvgrajyiDoMdUVogH7N8hm3+KbaKnO8mA7jkxVMACpfanwHRVJfM/+PHPOvML2v8QJ7JYGRgwlTyI5UxqUw9YuJSNJWThRWyw49A==&#xa;  2048 d9:53:14:a3:7f:99:51:40:3f:49:ef:ef:7f:8b:35:de (RSA)&#xa;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAgVBhkY/5TpbZpI7WmUiKX7koUuK6+K+usitE5rg6V326mmdJKt69IFmq4gcgpqXuImopLdGczY/8ulNoEj3aaPckhAVG5CLmlGMvRR5h2AW6pI7pUI9NkyAtLkm0fkyLDKLvKS32KSQ9jSdVPeXeCE0EpGJW5J5QOMWxEbS4z3XnLlkLqGz/wPRCwupYjJ+UsAgHfJVDKC7foPZj1ft/XX9oqcNkcykxz3AQtn0sEEZ8MfuWyePiVgYmsDLl0tBGdm0p9GExfWE0KAhpScWaxJzKmSFfzAjVpg60SyegBAhcIs0xMS18cBAS05OHNLKmMCfzOqm+8AjbVAyl+RF3&#xa;  256 ef:43:5b:d0:c0:eb:ee:3e:76:61:5c:6d:ce:15:fe:7e (ECDSA)&#xa;ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPHaPjoo6jLLN7KcEqjZCEXgAdRiejIMlLihehQ7+dmmxs4SqtjA8I8EjiqZpVL6kgSmDX5BpNxmyHjWJRHIC9U="><table>
+<elem key="key">AAAAB3NzaC1kc3MAAACBAIvXzKChMFQjoRVJPY3oKyzdX27i0MDEbmLG3yRuSLiPgYBF4jGq+7mn848WJSbLPpNAa/6xMgQb5BhhSTHgA77kg1gS8IhXvpoMlixJoJmGVBAqobxKAEbZnfbSKfjtJk7jI9mfoZjmOhznnzEwsODjzEDqtBYGEo4Mf/9KUX/jAAAAFQCdv46IJ36Dkyv7av5KP+Ghs7TzSwAAAIAVxh4PVUljX8ECckYq40LJ/jRL4qWhLSctMRK9J34+WSe2RHpRKRB+0eTpjffzNktRgFgKJJwW+3kd4HzOROMDvLEuhdrALiiNwqxYzIv70i+mwxNWoghoUcslgXOmeTAvyiW/jNU/Uav39nutehkX62PfvTRrulRzlbayMbkU4AAAAIABwdKXqzEKdPr7L+bCBLEe06k3Vd2bWvTOD3wwGzz+rzvmcexiPvgc1xRYE6Fno0QG2yfow9cvgrajyiDoMdUVogH7N8hm3+KbaKnO8mA7jkxVMACpfanwHRVJfM/+PHPOvML2v8QJ7JYGRgwlTyI5UxqUw9YuJSNJWThRWyw49A==</elem>
+<elem key="fingerprint">011bc8fe18712860846a9f303511663d</elem>
+<elem key="bits">1024</elem>
+<elem key="type">ssh-dss</elem>
+</table>
+<table>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQDAgVBhkY/5TpbZpI7WmUiKX7koUuK6+K+usitE5rg6V326mmdJKt69IFmq4gcgpqXuImopLdGczY/8ulNoEj3aaPckhAVG5CLmlGMvRR5h2AW6pI7pUI9NkyAtLkm0fkyLDKLvKS32KSQ9jSdVPeXeCE0EpGJW5J5QOMWxEbS4z3XnLlkLqGz/wPRCwupYjJ+UsAgHfJVDKC7foPZj1ft/XX9oqcNkcykxz3AQtn0sEEZ8MfuWyePiVgYmsDLl0tBGdm0p9GExfWE0KAhpScWaxJzKmSFfzAjVpg60SyegBAhcIs0xMS18cBAS05OHNLKmMCfzOqm+8AjbVAyl+RF3</elem>
+<elem key="fingerprint">d95314a37f9951403f49efef7f8b35de</elem>
+<elem key="bits">2048</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+<table>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPHaPjoo6jLLN7KcEqjZCEXgAdRiejIMlLihehQ7+dmmxs4SqtjA8I8EjiqZpVL6kgSmDX5BpNxmyHjWJRHIC9U=</elem>
+<elem key="fingerprint">ef435bd0c0ebee3e76615c6dce15fe7e</elem>
+<elem key="bits">256</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.2.22" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.22</cpe></service><script id="http-title" output="HackerSec"><elem key="title">HackerSec</elem>
+</script><script id="http-methods" output="&#xa;  Supported Methods: GET HEAD POST OPTIONS"><table key="Supported Methods">
+<elem>GET</elem>
+<elem>HEAD</elem>
+<elem>POST</elem>
+<elem>OPTIONS</elem>
+</table>
+</script><script id="http-server-header" output="Apache/2.2.22 (Ubuntu)"><elem>Apache/2.2.22 (Ubuntu)</elem>
+</script></port>
+</ports>
+<times srtt="23190" rttvar="621" to="100000"/>
+</host>
+<taskbegin task="NSE" time="1658432136"/>
+<taskend task="NSE" time="1658432136"/>
+<taskbegin task="NSE" time="1658432136"/>
+<taskend task="NSE" time="1658432136"/>
+<taskbegin task="NSE" time="1658432136"/>
+<taskend task="NSE" time="1658432136"/>
+<runstats><finished time="1658432136" timestr="Thu Jul 21 16:35:36 2022" summary="Nmap done at Thu Jul 21 16:35:36 2022; 1 IP address (1 host up) scanned in 19.15 seconds" elapsed="19.15" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
