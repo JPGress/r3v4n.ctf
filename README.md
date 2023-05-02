@@ -1,16 +1,12 @@
-# Cyberintel - CTF Hackersec
+# R3v4N - CTF Player
 
-Este repositório contém as soluções dos desafios de CTF da Hackersec. Os desafios são projetados para testar suas habilidades em vários campos da segurança cibernética, incluindo criptografia, esteganografia, engenharia reversa, exploração de vulnerabilidades, entre outros.
+Este repositório contém as soluções de diversas plataformas de CTF.
 
-## Como usar
+## [HACKERSEC](https://capturetheflag.com.br/login)
 
-1. Clone este repositório em sua máquina local:
-
-2. Navegue até o diretório do desafio que você deseja resolver.
-
-3. Siga as instruções contidas no arquivo README.md de cada desafio para resolver o desafio.
-
-4. Depois de resolver o desafio, envie sua solução em um pull request.
+* A plataforma é separada em **desafios** e **máquinas**.
+* [Acompanhe meu progresso](https://capturetheflag.com.br/player/R3v4N)
+* TOP 10 & TOP 50 da plataforma [**aqui**](https://capturetheflag.com.br/user/top)
 
 ## Desafios
 
