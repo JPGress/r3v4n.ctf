@@ -1,0 +1,30 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: dirb_output8080.txt
+START_TIME: Tue May  2 22:54:05 2023
+URL_BASE: http://10.0.0.22:8080/
+WORDLIST_FILES: /usr/share/dirb/wordlists/big.txt
+OPTION: Not Stopping on warning messages
+
+-----------------
+
+GENERATED WORDS: 20459
+
+---- Scanning URL: http://10.0.0.22:8080/ ----
++ http://10.0.0.22:8080/[ (CODE:400|SIZE:0)
++ http://10.0.0.22:8080/] (CODE:400|SIZE:0)
++ http://10.0.0.22:8080/docs (CODE:302|SIZE:0)
++ http://10.0.0.22:8080/examples (CODE:302|SIZE:0)
++ http://10.0.0.22:8080/favicon.ico (CODE:200|SIZE:21630)
++ http://10.0.0.22:8080/manager (CODE:302|SIZE:0)
++ http://10.0.0.22:8080/plain] (CODE:400|SIZE:0)
++ http://10.0.0.22:8080/quote] (CODE:400|SIZE:0)
++ http://10.0.0.22:8080/sample (CODE:302|SIZE:0)
+
+-----------------
+END_TIME: Tue May  2 23:02:53 2023
+DOWNLOADED: 20459 - FOUND: 9
