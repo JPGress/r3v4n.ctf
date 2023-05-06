@@ -1,0 +1,13 @@
+ADMIN
+QCC
+admin
+both
+cxsdk
+j2deployer
+manager
+ovwebusr
+role
+role1
+root
+tomcat
+xampp
