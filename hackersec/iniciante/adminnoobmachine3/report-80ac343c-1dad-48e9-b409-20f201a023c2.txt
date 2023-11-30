@@ -1,0 +1,492 @@
+I Summary
+=========
+
+This document reports on the results of an automatic security scan.
+The report first summarises the results found.
+Then, for each host, the report describes every issue found.
+Please consider the advice given in each description, in order to rectify
+the issue.
+
+All dates are displayed using the timezone "America/Sao_Paulo",
+which is abbreviated "-03".
+
+Vendor security updates are not trusted.
+
+Overrides are off.  Even when a result has an override, this report uses
+the actual threat of the result.
+
+Notes are included in the report.Information on overrides is included in the report.
+
+This report might not show details of all issues that were found.
+Issues with the threat level "Log" are not shown.
+Issues with the threat level "Debug" are not shown.
+Issues with the threat level "False Positive" are not shown.
+Only results with a minimum QoD of 70 are shown.
+
+This report contains all 8 results selected by the
+filtering described above.  Before filtering there were 81 results.
+
+Scan started: Wed Jul 20 19:44:14 2022 -03
+Scan ended:   Wed Jul 20 19:56:12 2022 -03
+Task:         Immediate scan of IP 10.0.0.26
+
+Host Summary
+************
+
+Host            High  Medium  Low  Log  False Positive
+10.0.0.26          4       3    1    0               0
+Total: 1           4       3    1    0               0
+
+
+II Results per Host
+===================
+
+Host 10.0.0.26
+**************
+
+Scanning of this host started at: Wed Jul 20 19:44:37 2022 -03
+Number of results: 8
+
+Port Summary for Host 10.0.0.26
+-------------------------------
+
+Service (Port)          Threat Level
+general/tcp             Low
+10000/tcp               High
+80/tcp                  Medium
+
+Security Issues for Host 10.0.0.26
+----------------------------------
+
+Issue
+-----
+NVT:    Webmin <= 1.991 Privilege Escalation Vulnerability
+OID:    1.3.6.1.4.1.25623.1.0.127014
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to a privilege escalation vulnerability.
+
+Vulnerability Detection Result:
+Installed version: 1.970
+Fixed version:     1.994
+Installation
+path / port:       /
+
+Solution:
+Solution type: VendorFix
+Update to version 1.994 or later.
+
+Affected Software/OS:
+Webmin version 1.991 and prior.
+
+Vulnerability Insight:
+Webmin, when the Authentic theme is used, allows remote code
+  execution when a user has been manually created (i.e., not created in Virtualm!
+in or Cloudmin).
+  This occurs because settings-editor_write.cgi does not properly restrict the f!
+ile parameter.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.991 Privilege Escalation Vulnerability
+(OID: 1.3.6.1.4.1.25623.1.0.127014)
+Version used: 2022-05-26T03:04:21Z
+
+References:
+ cve: CVE-2022-30708
+ url: https://github.com/esp0xdeadbeef/rce_webmin
+ url: https://github.com/webmin/webmin/issues/1635
+ url: https://www.webmin.com/security.html
+ cert-bund: CB-K22/0609
+
+
+Issue
+-----
+NVT:    Webmin <= 1.983 RCE Vulnerability
+OID:    1.3.6.1.4.1.25623.1.0.145090
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to a remote code execution (RCE) vulnerability.
+
+Vulnerability Detection Result:
+Installed version: 1.970
+Fixed version:     None
+Installation
+path / port:       /
+
+Solution:
+Solution type: WillNotFix
+No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymo!
+re. General solution
+  options are to upgrade to a newer release, disable respective features, remove!
+ the product or
+  replace the product by another one.
+
+Affected Software/OS:
+Webmin version 1.983 and prior.
+
+Vulnerability Insight:
+Arbitrary command execution can occur in Webmin. Any user
+  authorized for the Package Updates module can execute arbitrary commands with !
+root privileges via
+  vectors involving %0A and %0C.
+  NOTE: this issue exists because of an incomplete fix for CVE-2019-12840.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.983 RCE Vulnerability
+(OID: 1.3.6.1.4.1.25623.1.0.145090)
+Version used: 2021-12-23T08:45:36Z
+
+References:
+ cve: CVE-2020-35606
+ url: https://www.pentest.com.tr/exploits/Webmin-1962-PU-Escape-Bypass-Remote-Command-Execution.html
+
+
+Issue
+-----
+NVT:    Webmin <= 1.984 Multiple Vulnerabilities
+OID:    1.3.6.1.4.1.25623.1.0.147747
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to multiple vulnerabilities.
+
+Vulnerability Detection Result:
+Installed version: 1.970
+Fixed version:     1.990
+Installation
+path / port:       /
+
+Solution:
+Solution type: VendorFix
+Update to version 1.990 or later.
+
+Affected Software/OS:
+Webmin version 1.984 and prior.
+
+Vulnerability Insight:
+The following vulnerabilities exist:
+  - CVE-2022-0824: Improper access control leads to remote code execution (RCE)
+  - CVE-2022-0829: Improper authorization
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.984 Multiple Vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.147747)
+Version used: 2022-04-27T08:53:35Z
+
+References:
+ cve: CVE-2022-0824
+ cve: CVE-2022-0829
+ url: https://www.webmin.com/security.html
+ url: https://huntr.dev/bounties/d0049a96-de90-4b1a-9111-94de1044f295/
+ url: https://huntr.dev/bounties/f2d0389f-d7d1-4f34-9f9d-268b0a0da05e/
+ url: https://github.com/webmin/webmin/commit/eeeea3c097f5cc473770119f7ac61f1dcfa671b9
+ url: https://github.com/webmin/webmin/commit/39ea464f0c40b325decd6a5bfb7833fa4a142e38
+ cert-bund: CB-K22/0267
+
+
+Issue
+-----
+NVT:    Webmin <= 1.994 Multiple Vulnerabilities
+OID:    1.3.6.1.4.1.25623.1.0.127047
+Threat: High (CVSS: 8.8)
+Port:   10000/tcp
+
+Summary:
+Webmin is prone to multiple vulnerabilities.
+
+Vulnerability Detection Result:
+Installed version: 1.970
+Fixed version:     None
+Installation
+path / port:       /
+
+Solution:
+Solution type: NoneAvailable
+No known solution is available as of 16th June, 2022.
+  Information regarding this issue will be updated once solution details are ava!
+ilable.
+
+Affected Software/OS:
+Webmin version 1.994 and prior.
+
+Vulnerability Insight:
+The following vulnerabilities exist:
+  - CVE-2021-32156: A cross-site request forgery (CSRF) vulnerability exists via
+  the Scheduled Cron Jobs feature.
+  - CVE-2021-32157: A Cross-Site Scripting (XSS) vulnerability exists via the Sc!
+heduled Cron Jobs
+  feature.
+  - CVE-2021-32158: A Cross-Site Scripting (XSS) vulnerability exists via the Up!
+load and Download
+  feature.
+  - CVE-2021-32159: A Cross-site request forgery (CSRF) vulnerability exists via
+  the Upload and Download feature.
+  - CVE-2021-32160: A Cross-Site Scripting (XSS) vulnerability exists through
+  the Add Users feature.
+  - CVE-2021-32161: A Cross-Site Scripting (XSS) vulnerability exists through
+  the File Manager feature.
+  - CVE-2021-32162: A Cross-site request forgery (CSRF) vulnerability exists thr!
+ough
+  the File Manager feature.
+
+Vulnerability Detection Method:
+Checks if a vulnerable version is present on the target host.
+Details:
+Webmin <= 1.994 Multiple Vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.127047)
+Version used: 2022-06-17T14:04:08Z
+
+References:
+ cve: CVE-2021-32156
+ cve: CVE-2021-32157
+ cve: CVE-2021-32158
+ cve: CVE-2021-32159
+ cve: CVE-2021-32160
+ cve: CVE-2021-32161
+ cve: CVE-2021-32162
+ url: https://github.com/Mesh3l911/CVE-2021-32157
+ url: https://github.com/Mesh3l911/CVE-2021-32158
+ url: https://github.com/Mesh3l911/CVE-2021-32159
+ url: https://github.com/Mesh3l911/CVE-2021-32160
+ url: https://github.com/Mesh3l911/CVE-2021-32161
+ url: https://github.com/Mesh3l911/CVE-2021-32162
+ cert-bund: CB-K22/0412
+
+
+Issue
+-----
+NVT:    SSL/TLS: Renegotiation DoS Vulnerability (CVE-2011-1473, CVE-2011-5094)
+OID:    1.3.6.1.4.1.25623.1.0.117761
+Threat: Medium (CVSS: 5.0)
+Port:   10000/tcp
+
+Summary:
+The remote SSL/TLS service is prone to a denial of service (DoS)
+  vulnerability.
+
+Vulnerability Detection Result:
+The following indicates that the remote SSL/TLS service is affected:
+Protocol Version | Successful re-done SSL/TLS handshakes (Renegotiation) over an!
+ existing / already established SSL/TLS connection
+--------------------------------------------------------------------------------!
+--------------------------------------------------
+TLSv1.2          | 10
+
+Impact:
+The flaw might make it easier for remote attackers to cause a
+  DoS (CPU consumption) by performing many renegotiations within a single connec!
+tion.
+
+Solution:
+Solution type: VendorFix
+Users should contact their vendors for specific patch information.
+  A general solution is to remove/disable renegotiation capabilities altogether !
+from/in the affected
+  SSL/TLS service.
+
+Affected Software/OS:
+Every SSL/TLS service which does not properly restrict
+  client-initiated renegotiation.
+
+Vulnerability Insight:
+The flaw exists because the remote SSL/TLS service does not
+  properly restrict client-initiated renegotiation within the SSL and TLS protoc!
+ols.
+  Note: The referenced CVEs are affecting OpenSSL and Mozilla Network Security S!
+ervices (NSS) but
+  both are in a DISPUTED state with the following rationale:
+  > It can also be argued that it is the responsibility of server deployments, n!
+ot a security
+  library, to prevent or limit renegotiation when it is inappropriate within a s!
+pecific environment.
+  Both CVEs are still kept in this VT as a reference to the origin of this flaw.
+
+Vulnerability Detection Method:
+Checks if the remote service allows to re-do the same SSL/TLS
+  handshake (Renegotiation) over an existing / already established SSL/TLS conne!
+ction.
+Details:
+SSL/TLS: Renegotiation DoS Vulnerability (CVE-2011-1473, CVE-2011-5094)
+(OID: 1.3.6.1.4.1.25623.1.0.117761)
+Version used: 2021-11-15T10:28:20Z
+
+References:
+ cve: CVE-2011-1473
+ cve: CVE-2011-5094
+ url: https://orchilles.com/ssl-renegotiation-dos/
+ url: https://mailarchive.ietf.org/arch/msg/tls/wdg46VE_jkYBbgJ5yE4P9nQ-8IU/
+ url: https://vincent.bernat.ch/en/blog/2011-ssl-dos-mitigation
+ url: https://www.openwall.com/lists/oss-security/2011/07/08/2
+ url: https://vincent.bernat.ch/en/blog/2011-ssl-dos-mitigation
+ cert-bund: CB-K17/0980
+ cert-bund: CB-K17/0979
+ cert-bund: CB-K14/0772
+ cert-bund: CB-K13/0915
+ cert-bund: CB-K13/0462
+ dfn-cert: DFN-CERT-2017-1013
+ dfn-cert: DFN-CERT-2017-1012
+ dfn-cert: DFN-CERT-2014-0809
+ dfn-cert: DFN-CERT-2013-1928
+ dfn-cert: DFN-CERT-2012-1112
+
+
+Issue
+-----
+NVT:    Missing `httpOnly` Cookie Attribute
+OID:    1.3.6.1.4.1.25623.1.0.105925
+Threat: Medium (CVSS: 5.0)
+Port:   80/tcp
+
+Summary:
+The application is missing the 'httpOnly' cookie attribute
+
+Vulnerability Detection Result:
+The cookies:
+Set-Cookie: PHPSESSID=***replaced***; path=/
+are missing the "httpOnly" attribute.
+
+Solution:
+Solution type: Mitigation
+Set the 'httpOnly' attribute for any session cookie.
+
+Affected Software/OS:
+Application with session handling in cookies.
+
+Vulnerability Insight:
+The flaw is due to a cookie is not using the 'httpOnly' attribute. This
+  allows a cookie to be accessed by JavaScript which could lead to session hijac!
+king attacks.
+
+Vulnerability Detection Method:
+Check all cookies sent by the application for a missing 'httpOnly' attribute
+Details:
+Missing `httpOnly` Cookie Attribute
+(OID: 1.3.6.1.4.1.25623.1.0.105925)
+Version used: 2020-08-24T15:18:35Z
+
+References:
+ url: https://www.owasp.org/index.php/HttpOnly
+ url: https://www.owasp.org/index.php/Testing_for_cookies_attributes_(OTG-SESS-002)
+
+
+Issue
+-----
+NVT:    Cleartext Transmission of Sensitive Information via HTTP
+OID:    1.3.6.1.4.1.25623.1.0.108440
+Threat: Medium (CVSS: 4.8)
+Port:   80/tcp
+
+Summary:
+The host / application transmits sensitive information (username, passwords) in
+  cleartext via HTTP.
+
+Vulnerability Detection Result:
+The following input fields where identified (URL:input name):
+http://10.0.0.26/admin.php:pass
+
+Impact:
+An attacker could use this situation to compromise or eavesdrop on the
+  HTTP communication between the client and the server using a man-in-the-middle!
+ attack to get access to
+  sensitive data like usernames or passwords.
+
+Solution:
+Solution type: Workaround
+Enforce the transmission of sensitive data via an encrypted SSL/TLS connection.
+  Additionally make sure the host / application is redirecting all users to the !
+secured SSL/TLS connection before
+  allowing to input sensitive data into the mentioned functions.
+
+Affected Software/OS:
+Hosts / applications which doesn't enforce the transmission of sensitive data vi!
+a an
+  encrypted SSL/TLS connection.
+
+Vulnerability Detection Method:
+Evaluate previous collected information and check if the host / application is n!
+ot
+  enforcing the transmission of sensitive data via an encrypted SSL/TLS connecti!
+on.
+  The script is currently checking the following:
+  - HTTP Basic Authentication (Basic Auth)
+  - HTTP Forms (e.g. Login) with input field of type 'password'
+Details:
+Cleartext Transmission of Sensitive Information via HTTP
+(OID: 1.3.6.1.4.1.25623.1.0.108440)
+Version used: 2020-08-24T15:18:35Z
+
+References:
+ url: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management
+ url: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure
+ url: https://cwe.mitre.org/data/definitions/319.html
+
+
+Issue
+-----
+NVT:    TCP timestamps
+OID:    1.3.6.1.4.1.25623.1.0.80091
+Threat: Low (CVSS: 2.6)
+Port:   general/tcp
+
+Summary:
+The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.
+
+Vulnerability Detection Result:
+It was detected that the host implements RFC1323/RFC7323.
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 2235052150
+Packet 2: 2235053229
+
+Impact:
+A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.
+
+Solution:
+Solution type: Mitigation
+To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timesta!
+mps=disabled'
+  Starting with Windows Server 2008 and Vista, the timestamp can not be complete!
+ly disabled.
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP pee!
+r
+  that is initiating communication includes them in their synchronize (SYN) segm!
+ent.
+  See the references for more information.
+
+Affected Software/OS:
+TCP implementations that implement RFC1323/RFC7323.
+
+Vulnerability Insight:
+The remote host implements TCP timestamps, as defined by RFC1323/RFC7323.
+
+Vulnerability Detection Method:
+Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestam!
+ps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2020-08-24T08:40:10Z
+
+References:
+ url: http://www.ietf.org/rfc/rfc1323.txt
+ url: http://www.ietf.org/rfc/rfc7323.txt
+ url: https://web.archive.org/web/20151213072445/http://www.microsoft.com/en-us/download/details.aspx?id=9152
+
+

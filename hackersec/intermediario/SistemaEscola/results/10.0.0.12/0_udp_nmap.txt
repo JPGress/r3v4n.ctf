@@ -1,0 +1,28 @@
+# Nmap 7.92 scan initiated Tue Jul 26 11:38:15 2022 as: nmap -vv --reason -sV --version-intensity 0 -sC -sU -Pn --min-rate=400 -T4 --script-timeout 10m -oN results/10.0.0.12/0_udp_nmap.txt -oX results/10.0.0.12/0_udp_nmap.xml 10.0.0.12
+Nmap scan report for 10.0.0.12
+Host is up, received user-set (0.022s latency).
+Scanned at 2022-07-26 11:38:15 -03 for 146s
+Not shown: 982 open|filtered udp ports (no-response)
+PORT      STATE  SERVICE         REASON              VERSION
+965/udp   closed unknown         port-unreach ttl 63
+1026/udp  closed win-rpc         port-unreach ttl 63
+17824/udp closed unknown         port-unreach ttl 63
+18821/udp closed unknown         port-unreach ttl 63
+20360/udp closed unknown         port-unreach ttl 63
+20423/udp closed unknown         port-unreach ttl 63
+24854/udp closed unknown         port-unreach ttl 63
+27195/udp closed unknown         port-unreach ttl 63
+32780/udp closed sometimes-rpc24 port-unreach ttl 63
+35777/udp closed unknown         port-unreach ttl 63
+40019/udp closed unknown         port-unreach ttl 63
+40866/udp closed unknown         port-unreach ttl 63
+42577/udp closed unknown         port-unreach ttl 63
+44185/udp closed unknown         port-unreach ttl 63
+44334/udp closed unknown         port-unreach ttl 63
+49170/udp closed unknown         port-unreach ttl 63
+55544/udp closed unknown         port-unreach ttl 63
+61319/udp closed unknown         port-unreach ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jul 26 11:40:41 2022 -- 1 IP address (1 host up) scanned in 145.62 seconds

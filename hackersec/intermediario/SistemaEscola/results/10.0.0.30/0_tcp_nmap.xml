@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Jul 22 09:44:17 2022 as: nmap -vv -&#45;reason -sV -sC -Pn -&#45;min-rate=400 -T4 -&#45;script-timeout 10m -p- -oN results/10.0.0.30/0_tcp_nmap.txt -oX results/10.0.0.30/0_tcp_nmap.xml 10.0.0.30 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -sV -sC -Pn -&#45;min-rate=400 -T4 -&#45;script-timeout 10m -p- -oN results/10.0.0.30/0_tcp_nmap.txt -oX results/10.0.0.30/0_tcp_nmap.xml 10.0.0.30" start="1658493857" startstr="Fri Jul 22 09:44:17 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1658493858"/>
+<taskend task="NSE" time="1658493858"/>
+<taskbegin task="NSE" time="1658493858"/>
+<taskend task="NSE" time="1658493858"/>
+<taskbegin task="NSE" time="1658493858"/>
+<taskend task="NSE" time="1658493858"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1658493858"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1658493858"/>
+<taskbegin task="SYN Stealth Scan" time="1658493858"/>
+<taskend task="SYN Stealth Scan" time="1658493867" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1658493867"/>
+<taskend task="Service scan" time="1658493878" extrainfo="4 services on 1 host"/>
+<taskbegin task="NSE" time="1658493878"/>
+<taskend task="NSE" time="1658493880"/>
+<taskbegin task="NSE" time="1658493880"/>
+<taskend task="NSE" time="1658493880"/>
+<taskbegin task="NSE" time="1658493880"/>
+<taskend task="NSE" time="1658493880"/>
+<host starttime="1658493858" endtime="1658493880"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.0.0.30" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65531">
+<extrareasons reason="reset" count="65531" proto="tcp" ports="1-79,81-110,112-138,140-444,446-65535"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.4.29" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.29</cpe></service><script id="http-server-header" output="Apache/2.4.29 (Ubuntu)"><elem>Apache/2.4.29 (Ubuntu)</elem>
+</script><script id="http-methods" output="&#xa;  Supported Methods: POST OPTIONS HEAD GET"><table key="Supported Methods">
+<elem>POST</elem>
+<elem>OPTIONS</elem>
+<elem>HEAD</elem>
+<elem>GET</elem>
+</table>
+</script><script id="http-title" output="Apache2 Ubuntu Default Page: It works"><elem key="title">Apache2 Ubuntu Default Page: It works</elem>
+</script></port>
+<port protocol="tcp" portid="111"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="rpcbind" version="2-4" extrainfo="RPC #100000" method="probed" conf="10"/><script id="rpcinfo" output="&#xa;  program version    port/proto  service&#xa;  100000  2,3,4        111/tcp   rpcbind&#xa;  100000  2,3,4        111/udp   rpcbind&#xa;  100000  3,4          111/tcp6  rpcbind&#xa;  100000  3,4          111/udp6  rpcbind&#xa;"><table key="100000">
+<table key="local">
+<table key="version">
+<elem>3</elem>
+<elem>4</elem>
+</table>
+<elem key="addr">/run/rpcbind.sock</elem>
+<elem key="owner">superuser</elem>
+</table>
+<table key="udp">
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+<elem key="addr">0.0.0.0</elem>
+<elem key="port">111</elem>
+<elem key="owner">superuser</elem>
+</table>
+<table key="tcp">
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+<elem key="addr">0.0.0.0</elem>
+<elem key="port">111</elem>
+<elem key="owner">superuser</elem>
+</table>
+<table key="udp6">
+<table key="version">
+<elem>3</elem>
+<elem>4</elem>
+</table>
+<elem key="addr">::</elem>
+<elem key="port">111</elem>
+<elem key="owner">superuser</elem>
+</table>
+<table key="tcp6">
+<table key="version">
+<elem>3</elem>
+<elem>4</elem>
+</table>
+<elem key="addr">::</elem>
+<elem key="port">111</elem>
+<elem key="owner">superuser</elem>
+</table>
+</table>
+</script></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" hostname="LINUX" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="netbios-ssn" product="Samba smbd" version="4.7.6-Ubuntu" extrainfo="workgroup: WORKGROUP" hostname="LINUX" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+</ports>
+<hostscript><script id="clock-skew" output="mean: -440d20h13m59s, deviation: 2h18m33s, median: -440d21h33m59s"><elem key="stddev">8313</elem>
+<elem key="median">-38093639</elem>
+<elem key="count">3</elem>
+<elem key="mean">-38088839</elem>
+</script><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="smb2-security-mode" output="&#xa;  3.1.1: &#xa;    Message signing enabled but not required"><table key="3.1.1">
+<elem>Message signing enabled but not required</elem>
+</table>
+</script><script id="nbstat" output="NetBIOS name: LINUX, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)&#xa;Names:&#xa;  LINUX&lt;00&gt;            Flags: &lt;unique&gt;&lt;active&gt;&#xa;  LINUX&lt;03&gt;            Flags: &lt;unique&gt;&lt;active&gt;&#xa;  LINUX&lt;20&gt;            Flags: &lt;unique&gt;&lt;active&gt;&#xa;  WORKGROUP&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;&#xa;  WORKGROUP&lt;1e&gt;        Flags: &lt;group&gt;&lt;active&gt;&#xa;Statistics:&#xa;  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00&#xa;  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00&#xa;  00 00 00 00 00 00 00 00 00 00 00 00 00 00"/><script id="smb2-time" output="&#xa;  date: 2021-05-07T15:10:40&#xa;  start_date: N/A"><elem key="date">2021-05-07T15:10:40</elem>
+<elem key="start_date">N/A</elem>
+</script><script id="p2p-conficker" output="&#xa;  Checking for Conficker.C or higher...&#xa;  Check 1 (port 21420/tcp): CLEAN (Couldn&apos;t connect)&#xa;  Check 2 (port 64754/tcp): CLEAN (Couldn&apos;t connect)&#xa;  Check 3 (port 10881/udp): CLEAN (Failed to receive data)&#xa;  Check 4 (port 17917/udp): CLEAN (Failed to receive data)&#xa;  0/4 checks are positive: Host is CLEAN or ports are blocked&#xa;"/><script id="smb-os-discovery" output="&#xa;  OS: Windows 6.1 (Samba 4.7.6-Ubuntu)&#xa;  Computer name: osboxes&#xa;  NetBIOS computer name: LINUX\x00&#xa;  Domain name: \x00&#xa;  FQDN: osboxes&#xa;  System time: 2021-05-07T11:10:40-04:00&#xa;"><elem key="os">Windows 6.1</elem>
+<elem key="lanmanager">Samba 4.7.6-Ubuntu</elem>
+<elem key="server">LINUX\x00</elem>
+<elem key="date">2021-05-07T11:10:40-04:00</elem>
+<elem key="fqdn">osboxes</elem>
+<elem key="domain_dns">\x00</elem>
+<elem key="workgroup">WORKGROUP\x00</elem>
+</script></hostscript><times srtt="24726" rttvar="103" to="100000"/>
+</host>
+<taskbegin task="NSE" time="1658493880"/>
+<taskend task="NSE" time="1658493880"/>
+<taskbegin task="NSE" time="1658493880"/>
+<taskend task="NSE" time="1658493880"/>
+<taskbegin task="NSE" time="1658493880"/>
+<taskend task="NSE" time="1658493880"/>
+<runstats><finished time="1658493880" timestr="Fri Jul 22 09:44:40 2022" summary="Nmap done at Fri Jul 22 09:44:40 2022; 1 IP address (1 host up) scanned in 22.41 seconds" elapsed="22.41" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

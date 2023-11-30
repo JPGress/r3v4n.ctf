@@ -1,0 +1,29 @@
+# Nmap 7.92 scan initiated Sat Jul 23 08:40:18 2022 as: nmap -vv --reason -sV --version-intensity 0 -sC -sU -Pn --min-rate=400 -T4 --script-timeout 10m -oN results/10.0.0.36/0_udp_nmap.txt -oX results/10.0.0.36/0_udp_nmap.xml 10.0.0.36
+Increasing send delay for 10.0.0.36 from 0 to 50 due to 11 out of 17 dropped probes since last increase.
+Nmap scan report for 10.0.0.36
+Host is up, received user-set (0.026s latency).
+Scanned at 2022-07-23 08:40:18 -03 for 143s
+Not shown: 982 open|filtered udp ports (no-response)
+PORT      STATE  SERVICE    REASON              VERSION
+120/udp   closed cfdptkt    port-unreach ttl 63
+161/udp   closed snmp       port-unreach ttl 63
+389/udp   closed ldap       port-unreach ttl 63
+772/udp   closed cycleserv2 port-unreach ttl 63
+1434/udp  closed ms-sql-m   port-unreach ttl 63
+17823/udp closed unknown    port-unreach ttl 63
+18319/udp closed unknown    port-unreach ttl 63
+18331/udp closed unknown    port-unreach ttl 63
+34579/udp closed unknown    port-unreach ttl 63
+36893/udp closed unknown    port-unreach ttl 63
+38063/udp closed unknown    port-unreach ttl 63
+49154/udp closed unknown    port-unreach ttl 63
+49162/udp closed unknown    port-unreach ttl 63
+49189/udp closed unknown    port-unreach ttl 63
+49210/udp closed unknown    port-unreach ttl 63
+55043/udp closed unknown    port-unreach ttl 63
+61412/udp closed unknown    port-unreach ttl 63
+62154/udp closed unknown    port-unreach ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jul 23 08:42:41 2022 -- 1 IP address (1 host up) scanned in 142.64 seconds

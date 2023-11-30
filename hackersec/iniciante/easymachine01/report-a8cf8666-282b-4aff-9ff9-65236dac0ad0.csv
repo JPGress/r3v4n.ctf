@@ -1,0 +1,202 @@
+IP,Hostname,Port,Port Protocol,CVSS,Severity,Solution Type,NVT Name,Summary,Specific Result,NVT OID,CVEs,Task ID,Task Name,Timestamp,Result ID,Impact,Solution,Affected Software/OS,Vulnerability Insight,Vulnerability Detection Method,Product Detection Result,BIDs,CERTs,Other References
+10.0.0.27,,,,10.0,High,Mitigation,Operating System (OS) End of Life (EOL) Detection,"The Operating System (OS) on the remote host has reached the End
+  of Life (EOL) and should not be used anymore.","The ""Ubuntu"" Operating System on the remote host has reached the end of life.
+
+CPE:               cpe:/o:canonical:ubuntu_linux:12.04
+Installed version,
+build or SP:       12.04
+EOL date:          2017-04-28
+EOL info:          https://wiki.ubuntu.com/Releases
+",1.3.6.1.4.1.25623.1.0.103674,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,32d28d56-c79a-43de-b71e-bc8b5bba8f76,"An EOL version of an OS is not receiving any security updates
+  from the vendor. Unfixed security vulnerabilities might be leveraged by an attacker to compromise
+  the security of this host.","Upgrade the OS on the remote host to a version which is still
+  supported and receiving security updates by the vendor.",,,"Checks if an EOL version of an OS is present on the target
+  host.
+Details:
+Operating System (OS) End of Life (EOL) Detection
+(OID: 1.3.6.1.4.1.25623.1.0.103674)
+Version used: 2022-04-05T13:00:52Z
+","Product: cpe:/o:canonical:ubuntu_linux:12.04
+Method: OS Detection Consolidation and Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.105937)
+",,,
+10.0.0.27,,22,tcp,5.3,Medium,Mitigation,Weak Host Key Algorithm(s) (SSH),"The remote SSH server is configured to allow / support weak host
+  key algorithm(s).","The remote SSH server supports the following weak host key algorithm(s):
+
+host key algorithm | Description
+-----------------------------------------------------------------------------------------
+ssh-dss            | Digital Signature Algorithm (DSA) / Digital Signature Standard (DSS)
+",1.3.6.1.4.1.25623.1.0.117687,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,be31c90d-9366-4d46-a616-a4625b2a6eb1,,Disable the reported weak host key algorithm(s).,,,"Checks the supported host key algorithms of the remote SSH
+  server.
+
+  Currently weak host key algorithms are defined as the following:
+
+  - ssh-dss: Digital Signature Algorithm (DSA) / Digital Signature Standard (DSS)
+Details:
+Weak Host Key Algorithm(s) (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.117687)
+Version used: 2021-11-24T06:31:19Z
+",,,,
+10.0.0.27,,22,tcp,5.3,Medium,Mitigation,Weak Key Exchange (KEX) Algorithm(s) Supported (SSH),"The remote SSH server is configured to allow / support weak key
+  exchange (KEX) algorithm(s).","The remote SSH server supports the following weak KEX algorithm(s):
+
+KEX algorithm                      | Reason
+-------------------------------------------------------------------------------------------
+diffie-hellman-group-exchange-sha1 | Using SHA-1
+diffie-hellman-group1-sha1         | Using Oakley Group 2 (a 1024-bit MODP group) and SHA-1
+",1.3.6.1.4.1.25623.1.0.150713,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,b1cfb221-0e2f-4d3f-b8bd-990ed96a77a3,An attacker can quickly break individual connections.,"Disable the reported weak KEX algorithm(s)
+
+  - 1024-bit MODP group / prime KEX algorithms:
+
+  Alternatively use elliptic-curve Diffie-Hellmann in general, e.g. Curve 25519.",,"'- 1024-bit MODP group / prime KEX algorithms:
+
+  Millions of HTTPS, SSH, and VPN servers all use the same prime numbers for Diffie-Hellman key
+  exchange. Practitioners believed this was safe as long as new key exchange messages were generated
+  for every connection. However, the first step in the number field sieve-the most efficient
+  algorithm for breaking a Diffie-Hellman connection-is dependent only on this prime.
+
+  A nation-state can break a 1024-bit prime.","Checks the supported KEX algorithms of the remote SSH server.
+
+  Currently weak KEX algorithms are defined as the following:
+
+  - non-elliptic-curve Diffie-Hellmann (DH) KEX algorithms with 1024-bit MODP group / prime
+
+  - ephemerally generated key exchange groups uses SHA-1
+
+  - using RSA 1024-bit modulus key
+Details:
+Weak Key Exchange (KEX) Algorithm(s) Supported (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.150713)
+Version used: 2021-11-24T06:31:19Z
+",,,,
+10.0.0.27,,22,tcp,4.3,Medium,Mitigation,Weak Encryption Algorithm(s) Supported (SSH),"The remote SSH server is configured to allow / support weak
+  encryption algorithm(s).","The remote SSH server supports the following weak client-to-server encryption algorithm(s):
+
+3des-cbc
+aes128-cbc
+aes192-cbc
+aes256-cbc
+arcfour
+arcfour128
+arcfour256
+blowfish-cbc
+cast128-cbc
+rijndael-cbc@lysator.liu.se
+
+
+The remote SSH server supports the following weak server-to-client encryption algorithm(s):
+
+3des-cbc
+aes128-cbc
+aes192-cbc
+aes256-cbc
+arcfour
+arcfour128
+arcfour256
+blowfish-cbc
+cast128-cbc
+rijndael-cbc@lysator.liu.se
+",1.3.6.1.4.1.25623.1.0.105611,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,f3651d52-79fa-4fbd-9dc0-dc201eb7633b,,Disable the reported weak encryption algorithm(s).,,"'- The 'arcfour' cipher is the Arcfour stream cipher with 128-bit
+  keys. The Arcfour cipher is believed to be compatible with the RC4 cipher [SCHNEIER]. Arcfour
+  (and RC4) has problems with weak keys, and should not be used anymore.
+
+  - The 'none' algorithm specifies that no encryption is to be done. Note that this method provides
+  no confidentiality protection, and it is NOT RECOMMENDED to use it.
+
+  - A vulnerability exists in SSH messages that employ CBC mode that may allow an attacker to
+  recover plaintext from a block of ciphertext.","Checks the supported encryption algorithms (client-to-server
+  and server-to-client) of the remote SSH server.
+
+  Currently weak encryption algorithms are defined as the following:
+
+  - Arcfour (RC4) cipher based algorithms
+
+  - none algorithm
+
+  - CBC mode cipher based algorithms
+Details:
+Weak Encryption Algorithm(s) Supported (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.105611)
+Version used: 2021-09-20T08:25:27Z
+",,,,
+10.0.0.27,,80,tcp,4.3,Medium,VendorFix,Apache HTTP Server ETag Header Information Disclosure Weakness,"A weakness has been discovered in the Apache HTTP Server
+  if configured to use the FileETag directive.","Information that was gathered:
+Inode: 153327
+Size: 836
+
+",1.3.6.1.4.1.25623.1.0.103122,CVE-2003-1418,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,743128e8-2527-43b9-981a-2dbcd6b6dc05,"Exploitation of this issue may provide an attacker with
+  information that may be used to launch further attacks against a target network.","OpenBSD has released a patch that addresses this issue.
+  Inode numbers returned from the server are now encoded using a private hash to avoid the
+  release of sensitive information.
+
+  Novell has released TID10090670 to advise users to apply the available workaround of
+  disabling the directive in the configuration file for Apache releases on NetWare. Please
+  see the attached Technical Information Document for further details.",,,"Due to the way in which Apache HTTP Server generates
+  ETag response headers, it may be possible for an attacker to obtain sensitive information
+  regarding server files. Specifically, ETag header fields returned to a client contain the
+  file's inode number.
+Details:
+Apache HTTP Server ETag Header Information Disclosure Weakness
+(OID: 1.3.6.1.4.1.25623.1.0.103122)
+Version used: 2022-04-28T13:38:57Z
+","Product: cpe:/a:apache:http_server:2.2.22
+Method: Apache HTTP Server Detection Consolidation
+(OID: 1.3.6.1.4.1.25623.1.0.117232)
+",,"DFN-CERT-2017-1821,DFN-CERT-2017-0925,DFN-CERT-2015-0495,CB-K17/1750,CB-K17/0896,CB-K15/0469",
+10.0.0.27,,22,tcp,2.6,Low,Mitigation,Weak MAC Algorithm(s) Supported (SSH),"The remote SSH server is configured to allow / support weak MAC
+  algorithm(s).","The remote SSH server supports the following weak client-to-server MAC algorithm(s):
+
+hmac-md5
+hmac-md5-96
+hmac-sha1-96
+hmac-sha2-256-96
+hmac-sha2-512-96
+
+
+The remote SSH server supports the following weak server-to-client MAC algorithm(s):
+
+hmac-md5
+hmac-md5-96
+hmac-sha1-96
+hmac-sha2-256-96
+hmac-sha2-512-96
+",1.3.6.1.4.1.25623.1.0.105610,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,41b537de-0343-47be-ba97-1b7ba0a45c74,,Disable the reported weak MAC algorithm(s).,,,"Checks the supported MAC algorithms (client-to-server and
+  server-to-client) of the remote SSH server.
+
+  Currently weak MAC algorithms are defined as the following:
+
+  - MD5 based algorithms
+
+  - 96-bit based algorithms
+
+  - none algorithm
+Details:
+Weak MAC Algorithm(s) Supported (SSH)
+(OID: 1.3.6.1.4.1.25623.1.0.105610)
+Version used: 2021-09-20T11:05:40Z
+",,,,
+10.0.0.27,,,,2.6,Low,Mitigation,TCP timestamps,"The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 96901858
+Packet 2: 96902134
+",1.3.6.1.4.1.25623.1.0.80091,,36da57e0-bbc3-48d0-b2cc-ec11fa93bc88,Immediate scan of IP 10.0.0.27,2022-07-21T16:52:17Z,e3413267-534c-4c52-8b48-fdd955554b1b,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.",TCP implementations that implement RFC1323/RFC7323.,"The remote host implements TCP timestamps, as defined by RFC1323/RFC7323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2020-08-24T08:40:10Z
+",,,,
